@@ -44,7 +44,7 @@ export default function DocumentsModal({ isOpen, onClose }: DocumentsModalProps)
       id: "guidelines",
       label: t("documents.guidelines"),
       href: t("documents.guidelinesUrl"),
-      updatedText: t("documents.updated"),
+      updatedText: t("documents.guidelinesUpdated"),
     },
   ];
 

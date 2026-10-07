@@ -50,7 +50,7 @@ export const translations = {
     support: {
       title: "Wsparcie i kontakt",
       description:
-        "Klovy Chat to projekt tworzony z pasji do nowoczesnej, prywatnej i wolnej komunikacji — bez reklam, sprzedaży danych i zbędnego śledzenia użytkowników.\n\nKażde wsparcie pomaga nam rozwijać aplikację, utrzymywać serwery i zwiększać bezpieczeństwo.\n\n**Sposoby wsparcia:**\n\n- Suppi.pl – [https://suppi.pl/klovy-systems](https://suppi.pl/klovy-systems)\n- PayPal – [https://paypal.me/klovy0603](https://paypal.me/klovy0603)\n- Ko-fi – [https://ko-fi.com/klovysystems](https://ko-fi.com/klovysystems)\n\nDziękujemy za wsparcie i bycie częścią społeczności Klovy Chat. 💜",
+        "Klovy Chat to projekt tworzony z pasji do nowoczesnej, prywatnej i wolnej komunikacji — bez reklam, sprzedaży danych i zbędnego śledzenia użytkowników.\n\nKażde wsparcie pomaga nam rozwijać aplikację, utrzymywać serwery i zwiększać bezpieczeństwo.\n\n**Sposoby wsparcia:**\n\n- Suppi.pl – [https://suppi.pl/jakub-maksymowicz](https://suppi.pl/jakub-maksymowicz)\n- PayPal – [https://www.paypal.com/paypalme/klovy0603](https://www.paypal.com/paypalme/klovy0603)\n- Ko-fi – [https://ko-fi.com/jakubmaksymowicz0603](https://ko-fi.com/jakubmaksymowicz0603)\n- Liberapay – [https://liberapay.com/jakub-maksymowicz0603/](https://liberapay.com/jakub-maksymowicz0603/)\n\nDziękujemy za wsparcie i bycie częścią społeczności Klovy Chat. 💜",
     },
     download: {
       title: "Pobierz Klovy Chat",
@@ -167,7 +167,7 @@ export const translations = {
     support: {
       title: "Support & contact",
       description:
-        "Klovy Chat is a project created with passion for modern, private, and free communication — without ads, data sales, or unnecessary user tracking.\n\nEvery contribution helps us develop the app, maintain servers, and improve security.\n\n**Ways to support:**\n\n- Suppi.pl – [https://suppi.pl/klovy-systems](https://suppi.pl/klovy-systems)\n- PayPal – [https://paypal.me/klovy0603](https://paypal.me/klovy0603)\n- Ko-fi – [https://ko-fi.com/klovysystems](https://ko-fi.com/klovysystems)\n\nThank you for your support and for being part of the Klovy Chat community. 💜",
+        "Klovy Chat is a project created with passion for modern, private, and free communication — without ads, data sales, or unnecessary user tracking.\n\nEvery contribution helps us develop the app, maintain servers, and improve security.\n\n**Ways to support:**\n\n- Suppi.pl – [https://suppi.pl/jakub-maksymowicz](https://suppi.pl/jakub-maksymowicz)\n- PayPal – [https://www.paypal.com/paypalme/klovy0603](https://www.paypal.com/paypalme/klovy0603)\n- Ko-fi – [https://ko-fi.com/jakubmaksymowicz0603](https://ko-fi.com/jakubmaksymowicz0603)\n- Liberapay – [https://liberapay.com/jakub-maksymowicz0603/](https://liberapay.com/jakub-maksymowicz0603/)\n\nThank you for your support and for being part of the Klovy Chat community. 💜",
     },
     download: {
       title: "Download Klovy Chat",

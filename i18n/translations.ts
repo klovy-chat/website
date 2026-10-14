@@ -65,6 +65,10 @@ export const translations = {
       footer:
         "Aplikacja Klovy Chat jest w fazie publicznej bety, dlatego prosimy o wyrozumiałość. Pobierz aplikację na",
     },
+    blog: {
+      emptyState: "Brak wpisów na blogu.",
+      postNotFound: "Nie znaleziono wpisu.",
+    },
     footer: {
       documents: "Dokumenty",
       status: "Status",
@@ -181,6 +185,10 @@ export const translations = {
       releases: "GitHub Releases",
       footer:
         "The Klovy Chat application is in public beta, so please bear with us. Download the app on",
+    },
+    blog: {
+      emptyState: "No blog posts yet.",
+      postNotFound: "Post not found.",
     },
     footer: {
       documents: "Documents",

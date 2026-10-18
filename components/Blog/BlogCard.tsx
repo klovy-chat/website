@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { BlogMeta } from "@/lib/blog";
+import BlogDate from "./BlogDate";
 
-export default function BlogCard({ blog }: any) {
+export default function BlogCard({
+  blog,
+  lang,
+}: {
+  blog: BlogMeta;
+  lang: string;
+}) {
   return (
     <Link href={`/blog/${blog.slug}`} className="group">
       <article
@@ -22,7 +30,7 @@ export default function BlogCard({ blog }: any) {
       >
         <div className="relative h-48 w-full">
           <Image
-            src={blog.image}
+            src={blog.image ?? "/blog/1.webp"}
             alt={blog.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -48,6 +56,14 @@ export default function BlogCard({ blog }: any) {
         </div>
 
         <div className="flex flex-col flex-1 p-spacing_md">
+          {blog.publishedAt && (
+            <BlogDate
+              date={blog.publishedAt}
+              lang={lang}
+              className="text-sm opacity-70 mb-2"
+            />
+          )}
+
           <h3 className="text-lg font-semibold mb-2 line-clamp-2">
             {blog.title}
           </h3>

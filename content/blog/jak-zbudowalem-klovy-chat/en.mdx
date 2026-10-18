@@ -1,0 +1,176 @@
+---
+title: "How I built Klovy Chat?"
+description: "The story of how Klovy Chat grew from an idea and early prototypes into an open-source messaging app."
+publishedAt: "2026-10-18"
+image: "/blog/1.webp"
+tags: ["Klovy Chat", "Development", "Open Source"]
+readingTime: "15 min"
+---
+
+# How I built Klovy Chat?
+
+My name is Jakub Maksymowicz, I'm 20 years old, and I'm from Poland. I've been learning programming for several years, and one of the biggest projects I've been working on is Klovy Chat — an open-source messaging app intended to be an alternative to popular communication platforms.
+
+When I look at what the project has become today, it's sometimes hard to believe that it all started with simple curiosity. I didn't have a business plan or a detailed list of features. I'd been interested in messaging apps for a long time, and at some point, I wanted to try building one myself.
+
+I got my first laptop for Christmas in 2013 and started using it in January 2014. It was a Lenovo G580. I was seven years old at the time, and I remember that simply having my own computer felt like something special.
+
+One of the first applications I got to know was Gadu-Gadu, a popular messaging service in Poland. Back then, I didn't think about what server it ran on or how it delivered messages. I just liked being able to talk to other people over the internet.
+
+It was only later that I started becoming interested in how applications like that were actually built. I began wondering whether I could make something similar myself. I had no idea where to start, but the thought kept coming back every now and then.
+
+## 2020–2021 — My First Experiments
+
+In 2020, I started trying my hand at programming. I experimented with C++ and later became interested in HTML and CSS. I was still learning the basics, but even then, what interested me most was creating something of my own.
+
+I also started coming up with ideas for what my messaging app could look like. I made my first interface designs, experimented with colors and tried different conversation layouts. These weren't applications where you could actually send someone a message yet. I mainly wanted to see what the program in my head might look like on a screen.
+
+At that point, I wasn't able to build an entire messaging app. Designing an interface was one thing; creating a working system was something completely different. Still, I had to start somewhere.
+
+The COVID-19 pandemic was also going on at the time, making the internet and messaging apps an even bigger part of everyday life. It became easier to see how many people relied on them for conversations, schoolwork and work.
+
+I became more and more interested in the possibility of creating an application that other people could eventually install or open and use themselves. For the time being, though, it was still just an idea I returned to from time to time.
+
+## 2022–2024 — From Prototypes to Actual Development
+
+In February 2022, one of my teachers mentioned during a vocational IT class that she'd watched some of my YouTube videos. She said she liked them and encouraged me to keep creating.
+
+I remember that moment because I hadn't expected someone from school to take an interest in what I was doing outside the classroom. It was nice to hear, and it gave me some extra motivation.
+
+Over time, I developed a strong crush on her. It was a romantic attraction that affected how I behaved at school. I became more involved in classes, listened more carefully and often wished her a nice day after lessons. I didn't always know how to make sense of my feelings back then, but it was an important period in my life.
+
+In June 2023, I started thinking more seriously about the messaging app again. During an outing with my teacher to the town square and for ice cream, the idea came back to me. I started wondering what the application could look like.
+
+That was when I returned to working on prototypes. I already had some earlier concepts, so I wasn't starting entirely from scratch. I changed the interface, tried different layouts and thought about which elements the app should include.
+
+In September 2023, I took another break. For a while, I wasn't actively working on the messenger or thinking about it much. I hadn't abandoned the idea for good, but I wasn't ready to work on building it regularly.
+
+Things changed on October 10, 2024. I returned to the project, but this time I wanted to go beyond designing interfaces. I already had prototypes, so I decided it was finally time to start writing the actual application code.
+
+I began learning JavaScript and Node.js. I spent a lot of time reading documentation, looking for answers online and checking how other projects handled similar problems. I had to learn how to connect the frontend to the backend and make the application actually do what I'd planned.
+
+I didn't have entire days available for programming. I was still going to school, with tests, assignments and everyday responsibilities to deal with. I worked on the project whenever I could find the time.
+
+Sometimes I programmed during IT classes, sometimes during breaks. There were also times when I used my phone because I didn't have a computer nearby. It wasn't always comfortable, but I didn't want to put everything on hold just because I didn't have ideal conditions.
+
+Tuesdays are what I remember most. I often had free periods in my school timetable on Tuesdays, which gave me some time to work on Klovy Chat. I'd take out my phone and work on the code, even if I only had fifteen minutes or so.
+
+Eventually, Tuesday became my own little programming day. It's still my favorite day of the week because it reminds me of that period.
+
+I also learned a lot by looking at other messaging applications. Open-source projects were especially interesting to me because I could look at their code and see how they were put together. I didn't always understand every solution straight away, but that was part of how I gained experience.
+
+I didn't want to simply copy code I found online. I preferred to understand why something worked and whether the same approach made sense for my application. Sometimes that took quite a while, but working through real examples helped me learn.
+
+I also became interested in the idea of open-source software itself. I like that people can inspect the code, report problems and contribute to a project's development. Of course, making the source code public doesn't automatically make an application secure. It does, however, give users and other developers the opportunity to examine what is actually happening inside it.
+
+I also didn't want to create another service built around advertising and user tracking. From the beginning, I was more interested in a messenger where privacy and security would matter.
+
+Among the projects I followed were Stoat, formerly known as Revolt, and Fluxer. I was interested not only in their interfaces but also in their technical side. Looking at them helped me understand different approaches to building messaging applications.
+
+I wasn't planning to copy either project. I wanted to build something of my own and use what I'd learned from exploring other applications.
+
+## 2025 — The First Alpha and Public Beta
+
+In early August 2025, I released the first alpha version of Klovy Chat. It was an important milestone for me because, after all the designing and learning, I could finally show people a working application.
+
+I wanted others to try it and tell me what wasn't working or what could be improved. It's difficult to notice every problem on your own, especially when you know your project inside out.
+
+On August 22, 2025, I launched the public beta. From that point on, more people could use the messenger.
+
+The first version was written in JavaScript. The backend ran on Node.js, and Socket.IO handled real-time communication. This setup allowed me to develop the application relatively quickly and add new features as I went along.
+
+It didn't take long, though, for me to realize that running a public service was very different from testing an application on my own.
+
+Problems with abuse started appearing. There were large numbers of password reset requests, account takeovers, spam, and bursts of messages and images that put a strain on the server.
+
+I wasn't well prepared to manage a service like that yet. A friend helped me configure the infrastructure, and the project ran on a Windows Server machine. The application itself was running in development mode rather than in a properly prepared production environment.
+
+Only later did I begin to understand how many things need to be considered before making an application publicly available. It's not enough for registration to work, messages to be delivered and users to be able to log in. You also need to think about rate limits, access control, security measures and monitoring what's happening on the server.
+
+I can't confidently identify the cause of every incident from that period. I didn't carry out an investigation that would have allowed me to determine exactly where all the problems came from. What I did know was that the application and its infrastructure weren't prepared for the situations I was dealing with.
+
+I also realized that I couldn't blame all of this on the technologies I'd chosen. JavaScript and Node.js are used in plenty of large projects. In my case, a major part of the problem was my lack of experience and the fact that I was still learning how to design and maintain a public service.
+
+I started paying more attention to code structure, session management, data validation and limiting the number of requests. I also became interested in TypeScript, which can catch certain errors earlier and make working on a larger project easier.
+
+The more problems appeared, the harder it became to feel confident that the next fix would be enough. I didn't want to fix one issue only to discover another one shortly afterwards, especially if it was something I hadn't considered before.
+
+Eventually, I had to make the decision to shut down the first version of Klovy Chat.
+
+I didn't do it because I'd lost interest in the project. I simply didn't want to keep running a service that I wasn't yet able to secure and monitor properly. I decided it would be better to take a step back, learn from my mistakes and return to the project better prepared.
+
+It was a difficult decision, but looking back, I think I needed that experience.
+
+## 2025–2026 — Returning to the Project and Changing the Technology Stack
+
+After shutting down the first version, I took a break of several months from actively developing the messenger. I didn't stop being interested in it, but I needed some time to think about what the next stage should look like.
+
+I returned to the project in January 2026. This time, I didn't want to simply bring back the old version and carry on as if nothing had happened. I decided to rebuild the technical foundations of Klovy Chat.
+
+On the frontend, I switched to TypeScript. I already knew JavaScript, but with a larger application, I wanted better control over data structures and an easier way to catch certain errors while writing code.
+
+The biggest change, however, was the backend. Instead of Node.js, I chose Rust.
+
+I was interested in its performance, memory safety and type system. That doesn't mean choosing Rust automatically solves security problems. It's still possible to write faulty logic, misconfigure a server or overlook important protections. Still, I felt Rust was a good fit for the direction I wanted to take the backend.
+
+I also changed how real-time communication was handled. The first version used Socket.IO, but after the rebuild, I switched to WebSockets.
+
+I wanted more control over how the client and server exchanged data. That also meant having to implement and refine things such as handling disconnections and validating messages myself. Socket.IO already provides many useful features, so I don't think WebSockets are a better choice for every project. In my case, it was a decision based on the architecture I wanted to build.
+
+I also started approaching the infrastructure differently. Previously, I often dealt with things only after a specific problem appeared. After what happened with the first beta, I wanted to organize the way services were deployed and servers were managed more carefully.
+
+I started using Docker on a VPS for this purpose. Containers make it easier to separate individual services and maintain a more predictable environment. Docker doesn't guarantee security on its own, but it definitely helps me keep the infrastructure organized.
+
+Fluxer was also made publicly available in January 2026. I'd been following the project before then, and seeing its development gave me some additional motivation to keep working on Klovy Chat.
+
+I didn't see it as a race against other messaging apps. I simply wanted to see how far I could take my own project. I still had plenty of ideas I wanted to work on, and after the break, I had a clearer understanding of what needed more attention.
+
+## MongoDB — Why Did I Choose It?
+
+During the rebuild, I decided to stick with MongoDB. It's a document-oriented database that stores data in BSON format. This approach feels fairly natural to me because it resembles the object structures I work with in JavaScript and TypeScript.
+
+I also liked the flexibility it offers when changing data structures as a project grows. Klovy Chat isn't a finished application with every feature already planned out. As development continues, new requirements appear, and the data model sometimes needs to change with them.
+
+I'm not claiming that MongoDB is the best database for every messaging application. PostgreSQL and MySQL have plenty of advantages too, especially when an application relies heavily on relationships between data and transactions.
+
+In the end, I chose MongoDB because it fits the way I'm currently developing the project. At this stage, it's the solution I want to keep working with.
+
+## 2026 — The Second Version of Klovy Chat
+
+On July 21, 2026, I released the second version of Klovy Chat. After the break, the problems with the first beta and the technical rebuild, I was able to make the messenger available to users again.
+
+This time, my approach was different from what it had been in 2025. I already knew that having a working application wasn't enough. I also had to think about maintaining it, detecting problems and responding to situations that couldn't necessarily be predicted during ordinary testing.
+
+Klovy Chat is still in public beta. I'm continuing to develop new features, fix bugs and work on stability. I don't want to pretend that every problem has been solved just because a new version has been released.
+
+The most important thing is that my experience with the first version has changed how I approach the project. I pay more attention to the backend, infrastructure and security, rather than focusing only on what users see on their screens.
+
+In April 2026, I graduated from the IT technical school Vocational School Complex in Wolsztyn, Poland. In June 2024, I passed the INF.02 vocational IT exam with a score of 97%, and in May 2026, I took the advanced-level computer science matriculation exam.
+
+I'd like to keep improving my skills, gaining experience and eventually earning industry certifications as well. Graduating doesn't mean I'm done learning. There are still plenty of things I want to understand better, especially when it comes to backend development, security and server administration.
+
+I'm aware that building a messaging application isn't just about writing code and publishing it on GitHub. You also have to make sure the application is convenient to use, stable and worthy of people's trust.
+
+I'd like other people to get involved in developing Klovy Chat too. User feedback, bug reports and contributions from other developers can make a real difference. I don't expect to always find the best solution on my own.
+
+## What's Next?
+
+I want to continue developing Klovy Chat as a text and voice messaging platform where privacy, security and openness are important. There's still a lot of work ahead, both on the application itself and on the infrastructure behind it.
+
+I don't want to promise that every idea will be implemented straight away. I'd rather develop the project gradually and spend time on things that might not be immediately visible but still matter to the service as a whole.
+
+Sometimes I think back to when I first started using my laptop and Gadu-Gadu. Back then, I had no idea how to build a messaging app. Later came my first programming experiments, the prototypes and, eventually, the actual code I started working on on October 10, 2024.
+
+The first public beta in 2025 was a big step for me, but it also showed me just how much I still had to learn. Shutting the project down wasn't the end of the story. I returned to it in January 2026, rebuilt its foundations and released another version on July 21.
+
+Throughout all of this, I had to balance the project with school and other responsibilities. There were days when I could sit down at my computer and work without interruptions, but there were also times when I only had a few minutes during a free period at school and had to use my phone.
+
+Those small moments helped the project move forward, even when progress was slow.
+
+Klovy Chat means more to me than just another project for my portfolio. It's an idea that's been with me for years, and one I've finally managed to turn into a working application.
+
+Not everything went according to plan. I made mistakes, had to shut down the first version and change quite a few things. There's still a lot left to do, but at least I know more now than I did when I started.
+
+I want to keep developing Klovy Chat, learning along the way and seeing where I can take the project. And if other people join in who want to help build it too, even better.
+
+For now, I'm just keeping at it.

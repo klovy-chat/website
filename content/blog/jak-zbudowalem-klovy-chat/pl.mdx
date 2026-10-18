@@ -1,0 +1,176 @@
+---
+title: "Jak zbudowałem Klovy Chat?"
+description: "Historia tego, jak Klovy Chat wyrósł z pomysłu i pierwszych prototypów w otwartoźródłowy komunikator."
+publishedAt: "2026-10-18"
+image: "/blog/1.webp"
+tags: ["Klovy Chat", "Rozwój", "Open source"]
+readingTime: "15 min"
+---
+
+# Jak zbudowałem Klovy Chat?
+
+Nazywam się Jakub Maksymowicz, mam 20 lat i pochodzę z Polski. Uczę się programowania od kilku lat, a jednym z największych projektów, nad którymi pracuję, jest Klovy Chat — otwartoźródłowa aplikacja do komunikacji, która ma być alternatywą dla popularnych platform komunikacyjnych.
+
+Kiedy patrzę na to, czym projekt stał się dzisiaj, czasem trudno mi uwierzyć, że wszystko zaczęło się od zwykłej ciekawości. Nie miałem biznesplanu ani szczegółowej listy funkcji. Od dawna interesowały mnie komunikatory i w pewnym momencie chciałem spróbować zbudować własny.
+
+Pierwszy laptop dostałem na Boże Narodzenie w 2013 roku i zacząłem z niego korzystać w styczniu 2014 roku. Był to Lenovo G580. Miałem wtedy siedem lat i pamiętam, że samo posiadanie własnego komputera wydawało mi się czymś wyjątkowym.
+
+Jedną z pierwszych aplikacji, które poznałem, było Gadu-Gadu — popularny polski komunikator. W tamtym czasie nie zastanawiałem się, na jakim serwerze działa ani w jaki sposób dostarcza wiadomości. Po prostu podobała mi się możliwość rozmawiania z innymi przez internet.
+
+Dopiero później zacząłem interesować się tym, jak takie aplikacje są właściwie tworzone. Zacząłem się zastanawiać, czy sam mógłbym zrobić coś podobnego. Nie miałem pojęcia, od czego zacząć, ale ta myśl co jakiś czas do mnie wracała.
+
+## 2020–2021 — Moje pierwsze eksperymenty
+
+W 2020 roku zacząłem próbować swoich sił w programowaniu. Eksperymentowałem z C++, a później zainteresowałem się HTML-em i CSS-em. Wciąż uczyłem się podstaw, ale już wtedy najbardziej interesowało mnie tworzenie czegoś własnego.
+
+Zacząłem też wymyślać, jak mógłby wyglądać mój komunikator. Tworzyłem pierwsze projekty interfejsu, eksperymentowałem z kolorami i próbowałem różnych układów rozmów. Nie były to jeszcze aplikacje, w których można było naprawdę wysłać komuś wiadomość. Chciałem przede wszystkim zobaczyć, jak na ekranie mogłoby wyglądać to, co miałem w głowie.
+
+Na tamtym etapie nie potrafiłem zbudować całego komunikatora. Zaprojektowanie interfejsu było jedną rzeczą, a stworzenie działającego systemu — czymś zupełnie innym. Mimo to musiałem od czegoś zacząć.
+
+Trwała wtedy również pandemia COVID-19, przez co internet i komunikatory stały się jeszcze ważniejszą częścią codziennego życia. Łatwiej było dostrzec, jak wiele osób polega na nich w rozmowach, nauce i pracy.
+
+Coraz bardziej interesowała mnie możliwość stworzenia aplikacji, którą inni mogliby kiedyś zainstalować albo otworzyć i samodzielnie z niej korzystać. Na razie był to jednak tylko pomysł, do którego od czasu do czasu wracałem.
+
+## 2022–2024 — Od prototypów do prawdziwego programowania
+
+W lutym 2022 roku jedna z moich nauczycielek wspomniała na lekcji informatyki w szkole zawodowej, że oglądała niektóre z moich filmów na YouTube. Powiedziała, że jej się podobają, i zachęciła mnie, żebym dalej je tworzył.
+
+Pamiętam tę chwilę, bo nie spodziewałem się, że ktoś ze szkoły zainteresuje się tym, co robiłem poza lekcjami. Miło było to usłyszeć i dało mi dodatkową motywację.
+
+Z czasem mocno się w niej zauroczyłem. Było to romantyczne uczucie, które wpływało na moje zachowanie w szkole. Bardziej angażowałem się na lekcjach, uważniej słuchałem i często życzyłem jej miłego dnia po zajęciach. Wtedy nie zawsze wiedziałem, jak zrozumieć swoje uczucia, ale był to ważny okres w moim życiu.
+
+W czerwcu 2023 roku znów zacząłem poważniej myśleć o komunikatorze. Podczas wyjścia z nauczycielką na rynek i na lody wrócił do mnie ten pomysł. Zacząłem się zastanawiać, jak mogłaby wyglądać aplikacja.
+
+Wtedy wróciłem do pracy nad prototypami. Miałem już wcześniejsze koncepcje, więc nie zaczynałem zupełnie od zera. Zmieniałem interfejs, wypróbowywałem różne układy i zastanawiałem się, jakie elementy powinna zawierać aplikacja.
+
+We wrześniu 2023 roku zrobiłem kolejną przerwę. Przez pewien czas nie pracowałem aktywnie nad komunikatorem ani zbyt wiele o nim nie myślałem. Nie porzuciłem tego pomysłu na dobre, ale nie byłem gotowy, by regularnie nad nim pracować.
+
+Wszystko zmieniło się 10 października 2024 roku. Wróciłem do projektu, ale tym razem chciałem wyjść poza samo projektowanie interfejsów. Miałem już prototypy, więc uznałem, że wreszcie nadszedł czas, by zacząć pisać właściwy kod aplikacji.
+
+Zacząłem uczyć się JavaScriptu i Node.js. Dużo czasu poświęcałem na czytanie dokumentacji, szukanie odpowiedzi w internecie i sprawdzanie, jak inne projekty rozwiązywały podobne problemy. Musiałem nauczyć się łączyć frontend z backendem i sprawić, by aplikacja rzeczywiście robiła to, co zaplanowałem.
+
+Nie miałem całych dni do dyspozycji na programowanie. Nadal chodziłem do szkoły, miałem sprawdziany, zadania i codzienne obowiązki. Pracowałem nad projektem, kiedy tylko udawało mi się znaleźć czas.
+
+Czasami programowałem na lekcjach informatyki, czasami na przerwach. Zdarzało się też, że korzystałem z telefonu, bo nie miałem pod ręką komputera. Nie zawsze było to wygodne, ale nie chciałem odkładać wszystkiego tylko dlatego, że nie miałem idealnych warunków.
+
+Najbardziej zapamiętałem wtorki. We wtorkowym planie lekcji często miałem wolne godziny, które dawały mi trochę czasu na pracę nad Klovy Chat. Wyciągałem telefon i zajmowałem się kodem, nawet jeśli miałem tylko jakieś piętnaście minut.
+
+Z czasem wtorek stał się moim własnym małym dniem programowania. Nadal jest moim ulubionym dniem tygodnia, bo przypomina mi o tamtym okresie.
+
+Wiele nauczyłem się też, przyglądając się innym komunikatorom. Szczególnie interesowały mnie projekty open source, bo mogłem oglądać ich kod i sprawdzać, jak zostały zbudowane. Nie zawsze od razu rozumiałem każde rozwiązanie, ale właśnie tak zdobywałem doświadczenie.
+
+Nie chciałem po prostu kopiować kodu znalezionego w internecie. Wolałem zrozumieć, dlaczego coś działa i czy takie samo podejście ma sens w mojej aplikacji. Czasami zajmowało to sporo czasu, ale analizowanie prawdziwych przykładów pomagało mi się uczyć.
+
+Zainteresowała mnie również sama idea oprogramowania open source. Podoba mi się, że ludzie mogą sprawdzać kod, zgłaszać problemy i brać udział w rozwoju projektu. Oczywiście samo upublicznienie kodu źródłowego nie sprawia automatycznie, że aplikacja jest bezpieczna. Daje jednak użytkownikom i innym programistom możliwość sprawdzenia, co naprawdę dzieje się w jej wnętrzu.
+
+Nie chciałem też tworzyć kolejnej usługi opartej na reklamach i śledzeniu użytkowników. Od początku bardziej interesował mnie komunikator, w którym prywatność i bezpieczeństwo miałyby znaczenie.
+
+Wśród projektów, które obserwowałem, były Stoat, wcześniej znany jako Revolt, oraz Fluxer. Interesowały mnie nie tylko ich interfejsy, ale również ich strona techniczna. Przyglądanie się im pomogło mi zrozumieć różne sposoby budowania komunikatorów.
+
+Nie planowałem kopiować żadnego z tych projektów. Chciałem zbudować coś własnego i wykorzystać to, czego nauczyłem się, poznając inne aplikacje.
+
+## 2025 — Pierwsza wersja alfa i publiczna beta
+
+Na początku sierpnia 2025 roku opublikowałem pierwszą wersję alfa Klovy Chat. Był to dla mnie ważny kamień milowy, bo po całym projektowaniu i nauce mogłem wreszcie pokazać ludziom działającą aplikację.
+
+Chciałem, żeby inni ją wypróbowali i powiedzieli mi, co nie działa albo co można poprawić. Trudno samemu zauważyć każdy problem, zwłaszcza gdy zna się swój projekt od podszewki.
+
+22 sierpnia 2025 roku uruchomiłem publiczną betę. Od tego momentu więcej osób mogło korzystać z komunikatora.
+
+Pierwsza wersja była napisana w JavaScripcie. Backend działał na Node.js, a Socket.IO obsługiwało komunikację w czasie rzeczywistym. Taki zestaw pozwalał mi dość szybko rozwijać aplikację i dodawać nowe funkcje w miarę pracy.
+
+Szybko jednak zrozumiałem, że prowadzenie publicznej usługi bardzo różni się od samodzielnego testowania aplikacji.
+
+Zaczęły pojawiać się problemy związane z nadużyciami. Było bardzo dużo próśb o zresetowanie hasła, przejęć kont, spamu oraz nagłych fal wiadomości i obrazów, które obciążały serwer.
+
+Nie byłem jeszcze dobrze przygotowany do zarządzania taką usługą. Znajomy pomógł mi skonfigurować infrastrukturę, a projekt działał na maszynie z systemem Windows Server. Sama aplikacja działała w trybie deweloperskim, a nie w odpowiednio przygotowanym środowisku produkcyjnym.
+
+Dopiero później zacząłem rozumieć, ile rzeczy trzeba wziąć pod uwagę przed publicznym udostępnieniem aplikacji. Nie wystarczy, że rejestracja działa, wiadomości są dostarczane, a użytkownicy mogą się zalogować. Trzeba też pomyśleć o limitach liczby żądań, kontroli dostępu, zabezpieczeniach i monitorowaniu tego, co dzieje się na serwerze.
+
+Nie potrafię z przekonaniem wskazać przyczyny każdego incydentu z tamtego okresu. Nie przeprowadziłem dochodzenia, które pozwoliłoby mi dokładnie ustalić, skąd wzięły się wszystkie problemy. Wiedziałem natomiast, że aplikacja i jej infrastruktura nie były przygotowane na sytuacje, z którymi się mierzyłem.
+
+Zrozumiałem też, że nie mogę zrzucić całej winy na wybrane technologie. JavaScript i Node.js są używane w wielu dużych projektach. W moim przypadku dużą częścią problemu był brak doświadczenia i to, że wciąż uczyłem się projektować i utrzymywać publiczną usługę.
+
+Zacząłem zwracać większą uwagę na strukturę kodu, zarządzanie sesjami, walidację danych i ograniczanie liczby żądań. Zainteresowałem się też TypeScriptem, który może wcześniej wykrywać niektóre błędy i ułatwiać pracę nad większym projektem.
+
+Im więcej pojawiało się problemów, tym trudniej było mi mieć pewność, że kolejna poprawka wystarczy. Nie chciałem naprawić jednego problemu, a chwilę później odkryć następnego — zwłaszcza czegoś, czego wcześniej w ogóle nie brałem pod uwagę.
+
+W końcu musiałem podjąć decyzję o wyłączeniu pierwszej wersji Klovy Chat.
+
+Nie zrobiłem tego dlatego, że straciłem zainteresowanie projektem. Po prostu nie chciałem dalej prowadzić usługi, której nie potrafiłem jeszcze odpowiednio zabezpieczać i monitorować. Uznałem, że lepiej będzie się wycofać, wyciągnąć wnioski z błędów i wrócić do projektu lepiej przygotowanym.
+
+To była trudna decyzja, ale z perspektywy czasu sądzę, że potrzebowałem tego doświadczenia.
+
+## 2025–2026 — Powrót do projektu i zmiana technologii
+
+Po wyłączeniu pierwszej wersji zrobiłem kilkumiesięczną przerwę od aktywnego rozwijania komunikatora. Nadal się nim interesowałem, ale potrzebowałem czasu, żeby przemyśleć, jak powinien wyglądać kolejny etap.
+
+Wróciłem do projektu w styczniu 2026 roku. Tym razem nie chciałem po prostu przywrócić starej wersji i zachowywać się tak, jakby nic się nie wydarzyło. Postanowiłem przebudować techniczne podstawy Klovy Chat.
+
+Po stronie frontendu przeszedłem na TypeScript. Znałem już JavaScript, ale przy większej aplikacji chciałem lepiej kontrolować struktury danych i łatwiej wykrywać niektóre błędy podczas pisania kodu.
+
+Największą zmianą był jednak backend. Zamiast Node.js wybrałem Rusta.
+
+Zainteresowały mnie jego wydajność, bezpieczeństwo pamięci i system typów. Nie oznacza to, że wybór Rusta automatycznie rozwiązuje problemy z bezpieczeństwem. Nadal można napisać błędną logikę, źle skonfigurować serwer albo przeoczyć ważne zabezpieczenia. Uznałem jednak, że Rust dobrze pasuje do kierunku, w którym chciałem rozwijać backend.
+
+Zmieniłem też sposób obsługi komunikacji w czasie rzeczywistym. Pierwsza wersja korzystała z Socket.IO, ale po przebudowie przeszedłem na WebSockety.
+
+Chciałem mieć większą kontrolę nad tym, jak klient i serwer wymieniają dane. Oznaczało to również konieczność samodzielnego zaimplementowania i dopracowania takich rzeczy, jak obsługa rozłączeń i walidacja wiadomości. Socket.IO ma już wiele przydatnych funkcji, dlatego nie uważam, że WebSockety są lepszym wyborem dla każdego projektu. W moim przypadku była to decyzja wynikająca z architektury, którą chciałem zbudować.
+
+Zacząłem też inaczej podchodzić do infrastruktury. Wcześniej często zajmowałem się różnymi sprawami dopiero wtedy, gdy pojawił się konkretny problem. Po tym, co wydarzyło się podczas pierwszej bety, chciałem lepiej zorganizować wdrażanie usług i zarządzanie serwerami.
+
+W tym celu zacząłem używać Dockera na VPS-ie. Kontenery ułatwiają oddzielanie poszczególnych usług i utrzymywanie bardziej przewidywalnego środowiska. Sam Docker nie gwarantuje bezpieczeństwa, ale zdecydowanie pomaga mi utrzymywać porządek w infrastrukturze.
+
+Fluxer został również udostępniony publicznie w styczniu 2026 roku. Obserwowałem ten projekt już wcześniej, a śledzenie jego rozwoju dało mi dodatkową motywację do dalszej pracy nad Klovy Chat.
+
+Nie traktowałem tego jak wyścigu z innymi komunikatorami. Chciałem po prostu zobaczyć, jak daleko uda mi się rozwinąć własny projekt. Nadal miałem wiele pomysłów, nad którymi chciałem pracować, a po przerwie lepiej rozumiałem, co wymaga większej uwagi.
+
+## MongoDB — dlaczego je wybrałem?
+
+Podczas przebudowy postanowiłem pozostać przy MongoDB. To dokumentowa baza danych, która przechowuje dane w formacie BSON. To podejście wydaje mi się dość naturalne, bo przypomina struktury obiektów, z którymi pracuję w JavaScripcie i TypeScripcie.
+
+Podobała mi się również elastyczność, jaką daje przy zmianach struktur danych w miarę rozwoju projektu. Klovy Chat nie jest ukończoną aplikacją, w której wszystkie funkcje zostały już zaplanowane. W trakcie rozwoju pojawiają się nowe wymagania, a model danych czasami musi się do nich dostosować.
+
+Nie twierdzę, że MongoDB jest najlepszą bazą danych dla każdego komunikatora. PostgreSQL i MySQL również mają wiele zalet, szczególnie gdy aplikacja w dużym stopniu opiera się na relacjach między danymi i transakcjach.
+
+Ostatecznie wybrałem MongoDB, bo pasuje do sposobu, w jaki obecnie rozwijam projekt. Na tym etapie jest to rozwiązanie, z którym chcę dalej pracować.
+
+## 2026 — Druga wersja Klovy Chat
+
+21 lipca 2026 roku wydałem drugą wersję Klovy Chat. Po przerwie, problemach z pierwszą betą i przebudowie technicznej mogłem ponownie udostępnić komunikator użytkownikom.
+
+Tym razem moje podejście różniło się od tego z 2025 roku. Wiedziałem już, że działająca aplikacja to za mało. Musiałem też myśleć o jej utrzymaniu, wykrywaniu problemów i reagowaniu na sytuacje, których nie zawsze da się przewidzieć podczas zwykłych testów.
+
+Klovy Chat nadal jest w publicznej becie. W dalszym ciągu rozwijam nowe funkcje, naprawiam błędy i pracuję nad stabilnością. Nie chcę udawać, że wszystkie problemy zostały rozwiązane tylko dlatego, że ukazała się nowa wersja.
+
+Najważniejsze jest to, że doświadczenie zdobyte przy pierwszej wersji zmieniło moje podejście do projektu. Więcej uwagi poświęcam backendowi, infrastrukturze i bezpieczeństwu, zamiast skupiać się wyłącznie na tym, co użytkownicy widzą na ekranach.
+
+W kwietniu 2026 roku ukończyłem technikum informatyczne w Zespole Szkół Zawodowych w Wolsztynie. W czerwcu 2024 roku zdałem zawodowy egzamin informatyczny INF.02 z wynikiem 97%, a w maju 2026 roku przystąpiłem do matury z informatyki na poziomie rozszerzonym.
+
+Chciałbym nadal rozwijać swoje umiejętności, zdobywać doświadczenie i w przyszłości uzyskać również certyfikaty branżowe. Ukończenie szkoły nie oznacza końca nauki. Wciąż jest wiele rzeczy, które chcę lepiej zrozumieć, szczególnie w zakresie tworzenia backendu, bezpieczeństwa i administrowania serwerami.
+
+Wiem, że budowanie komunikatora nie polega tylko na pisaniu kodu i publikowaniu go na GitHubie. Trzeba również zadbać o to, by aplikacja była wygodna w użyciu, stabilna i godna zaufania.
+
+Chciałbym, żeby inne osoby również zaangażowały się w rozwój Klovy Chat. Opinie użytkowników, zgłoszenia błędów i wkład innych programistów mogą naprawdę wiele zmienić. Nie zakładam, że zawsze sam znajdę najlepsze rozwiązanie.
+
+## Co dalej?
+
+Chcę dalej rozwijać Klovy Chat jako platformę do komunikacji tekstowej i głosowej, w której ważne są prywatność, bezpieczeństwo i otwartość. Nadal jest dużo pracy zarówno nad samą aplikacją, jak i nad infrastrukturą, która za nią stoi.
+
+Nie chcę obiecywać, że każdy pomysł zostanie od razu zrealizowany. Wolę rozwijać projekt stopniowo i poświęcać czas również na rzeczy, które mogą nie być od razu widoczne, ale mają znaczenie dla całej usługi.
+
+Czasami wracam myślami do chwili, gdy po raz pierwszy zacząłem korzystać z laptopa i Gadu-Gadu. Wtedy nie miałem pojęcia, jak zbudować komunikator. Później przyszły pierwsze eksperymenty z programowaniem, prototypy i wreszcie właściwy kod, nad którym zacząłem pracować 10 października 2024 roku.
+
+Pierwsza publiczna beta w 2025 roku była dla mnie dużym krokiem, ale pokazała mi też, jak wiele muszę się jeszcze nauczyć. Wyłączenie projektu nie było końcem tej historii. Wróciłem do niego w styczniu 2026 roku, przebudowałem jego podstawy i 21 lipca wydałem kolejną wersję.
+
+Przez cały ten czas musiałem godzić projekt ze szkołą i innymi obowiązkami. Zdarzały się dni, kiedy mogłem usiąść przy komputerze i pracować bez przerw, ale były też takie, gdy podczas wolnej lekcji miałem tylko kilka minut i musiałem korzystać z telefonu.
+
+Te krótkie chwile pomagały projektowi posuwać się naprzód, nawet jeśli postępy były powolne.
+
+Klovy Chat znaczy dla mnie więcej niż kolejny projekt do portfolio. To pomysł, który towarzyszy mi od lat i który w końcu udało mi się zamienić w działającą aplikację.
+
+Nie wszystko poszło zgodnie z planem. Popełniałem błędy, musiałem wyłączyć pierwszą wersję i zmienić całkiem sporo rzeczy. Nadal wiele pozostaje do zrobienia, ale przynajmniej wiem teraz więcej niż na początku.
+
+Chcę dalej rozwijać Klovy Chat, uczyć się po drodze i sprawdzać, dokąd uda mi się doprowadzić ten projekt. A jeśli dołączą do niego inni, którzy również będą chcieli pomóc w jego tworzeniu, tym lepiej.
+
+Na razie po prostu działam dalej.

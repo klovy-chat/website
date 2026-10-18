@@ -9,6 +9,7 @@ export type BlogMeta = {
   language: string;
   title: string;
   description: string;
+  publishedAt?: string;
   image?: string;
   tags: string[];
   readingTime?: string;
@@ -54,6 +55,7 @@ function readBlogFile(slug: string, lang: string): BlogPost | null {
     language: resolvedFile.language,
     title: data.title,
     description: data.description,
+    publishedAt: data.publishedAt,
     image: data.image,
     tags: data.tags || [],
     readingTime: data.readingTime,
@@ -76,6 +78,7 @@ export function getAllBlogs(lang: string): BlogMeta[] {
         language: post.language,
         title: post.title,
         description: post.description,
+        publishedAt: post.publishedAt,
         image: post.image,
         tags: post.tags,
         readingTime: post.readingTime,

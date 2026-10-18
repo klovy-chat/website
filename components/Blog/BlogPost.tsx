@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { BlogPost as BlogPostType } from "@/lib/blog";
 import type { ReactNode } from "react";
+import BlogDate from "./BlogDate";
 
 type BlogPostProps = {
   postsByLang: Record<
@@ -30,6 +31,13 @@ export default function BlogPost({ postsByLang }: BlogPostProps) {
   return (
     <article className="w-full py-section">
       <div className="max-w-7xl mx-auto px-spacing_lg xl:px-spacing_xl">
+        {post.publishedAt && (
+          <BlogDate
+            date={post.publishedAt}
+            lang={lang}
+            className="text-sm opacity-70 mb-3"
+          />
+        )}
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <p className="opacity-70 mb-6">{post.description}</p>
 

@@ -23,7 +23,7 @@ export default function Blog({ blogsByLang }: BlogProps) {
       ) : (
         <div className="grid gap-spacing_lg md:grid-cols-2 xl:grid-cols-3">
           {blogs.map((blog) => (
-            <BlogCard key={blog.slug} blog={blog} />
+            <BlogCard key={blog.slug} blog={blog} lang={lang} />
           ))}
         </div>
       )}

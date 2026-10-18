@@ -33,13 +33,14 @@ Gdy dla jednego języka istnieją oba rozszerzenia, używany jest plik `.mdx`.
 ---
 title: "Tytuł wpisu"
 description: "Opis na liście bloga"
+publishedAt: "2026-10-18"
 image: "/blog/twoj-slug.webp"
 tags: ["Klovy Chat", "Aktualizacja"]
 readingTime: "5 min"
 ---
 ```
 
-Poniżej frontmatter pisz treść w Markdown. Pliki `.mdx` obsługują dodatkowo JSX w treści, np. semantyczne elementy HTML.
+Pole `publishedAt` jest opcjonalne i używa formatu `YYYY-MM-DD`; data pojawi się na karcie oraz stronie wpisu. Poniżej frontmatter pisz treść w Markdown. Pliki `.mdx` obsługują dodatkowo JSX w treści, np. semantyczne elementy HTML.
 
 ## Obrazek
 

@@ -30,7 +30,7 @@ Trasy: `/` (start), `/about`, `/team`, `/support`, `/download`, `/blog`.
 ## Funkcje
 
 - Landing z funkcjami produktu
-- Blog (Markdown PL / EN)
+- Blog (Markdown / MDX, opcjonalne tłumaczenia PL / EN)
 - Pobieranie instalatorów desktop
 - Strona zespołu i wsparcia
 - i18n: polski i angielski
@@ -99,7 +99,7 @@ Szablon: [`.env.example`](.env.example) (`cp .env.example .env.local`). Nie comm
 - **TypeScript**
 - **Tailwind CSS**
 - **Framer Motion** — animacje
-- **react-markdown** — blog
+- **next-mdx-remote**, **react-markdown** — blog MDX and support content
 - **OpenNext + Cloudflare Workers** — hosting
 - **i18n** — PL / EN
 
@@ -112,7 +112,7 @@ website/
 ├── app/                     # App Router (strony i layouty)
 ├── components/              # UI (MainPage, Blog, Team, Download, …)
 ├── content/
-│   └── blog/                # Wpisy Markdown (pl.md / en.md)
+│   └── blog/                # Wpisy Markdown / MDX (en.md / en.mdx / pl.md / pl.mdx)
 ├── i18n/                    # Tłumaczenia
 ├── lib/                     # Blog, downloads, zespół
 ├── public/                  # Statyczne zasoby

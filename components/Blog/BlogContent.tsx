@@ -1,6 +1,4 @@
-"use client";
-
-import ReactMarkdown from "react-markdown";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
 export default function BlogContent({ content }: { content: string }) {
@@ -20,14 +18,13 @@ export default function BlogContent({ content }: { content: string }) {
     prose-h3:text-primary
   "
     >
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+      <MDXRemote
+        source={content}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
         components={{
-          h1: ({ node, ...props }) => <h2 {...props} />,
+          h1: (props) => <h2 {...props} />,
         }}
-      >
-        {content}
-      </ReactMarkdown>
+      />
     </div>
   );
 }

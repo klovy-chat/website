@@ -25,25 +25,7 @@ if (fs.existsSync(postDir)) {
 
 fs.mkdirSync(postDir, { recursive: true });
 
-const plTemplate = `---
-title: "Tytuł wpisu"
-description: "Krótki opis widoczny na liście bloga"
-image: "/blog/${slug}.webp"
-tags: ["Klovy Chat"]
-readingTime: "5 min"
----
-
-# Tytuł wpisu
-
-Treść wpisu w Markdown...
-
-## Nagłówek sekcji
-
-- punkt listy
-- kolejny punkt
-`;
-
-const enTemplate = `---
+const template = `---
 title: "Post title"
 description: "Short description shown on the blog list"
 image: "/blog/${slug}.webp"
@@ -53,7 +35,7 @@ readingTime: "5 min"
 
 # Post title
 
-Post content in Markdown...
+Post content in Markdown or MDX...
 
 ## Section heading
 
@@ -61,14 +43,13 @@ Post content in Markdown...
 - another item
 `;
 
-fs.writeFileSync(path.join(postDir, "pl.md"), plTemplate, "utf-8");
-fs.writeFileSync(path.join(postDir, "en.md"), enTemplate, "utf-8");
+fs.writeFileSync(path.join(postDir, "en.mdx"), template, "utf-8");
 
 console.log(`Utworzono wpis: content/blog/${slug}/`);
-console.log("  - pl.md");
-console.log("  - en.md");
+console.log("  - en.mdx");
 console.log("");
 console.log("Następne kroki:");
-console.log(`  1. Edytuj pliki w content/blog/${slug}/`);
-console.log(`  2. (Opcjonalnie) dodaj obrazek do public/blog/${slug}.webp`);
-console.log("  3. Wypchnij zmiany na GitHub — Cloudflare zbuduje stronę automatycznie");
+console.log(`  1. Edytuj content/blog/${slug}/en.mdx`);
+console.log(`  2. (Opcjonalnie) dodaj tłumaczenie jako content/blog/${slug}/pl.mdx lub pl.md`);
+console.log(`  3. (Opcjonalnie) dodaj obrazek do public/blog/${slug}.webp`);
+console.log("  4. Wypchnij zmiany na GitHub — Cloudflare zbuduje stronę automatycznie");

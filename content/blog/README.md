@@ -1,6 +1,6 @@
 # Blog — jak dodać wpis
 
-Każdy wpis to folder w `content/blog/` z dwoma plikami Markdown: `pl.md` i `en.md`.
+Każdy wpis to folder w `content/blog/`. Wpis może mieć jeden plik źródłowy `.md` lub `.mdx`; tłumaczenia są opcjonalnymi plikami o nazwie języka (`en` lub `pl`).
 
 ## Szybki start
 
@@ -14,19 +14,18 @@ Przykład:
 npm run new-post -- aktualizacja-beta
 ```
 
-To utworzy:
-
-```
-content/blog/aktualizacja-beta/
-├── pl.md
-└── en.md
-```
+To utworzy `content/blog/aktualizacja-beta/en.mdx` z przykładowym frontmatter i treścią.
 
 ## Ręczne dodawanie
 
 1. Utwórz folder `content/blog/twoj-slug/`
-2. Dodaj `pl.md` i `en.md` z frontmatter na górze pliku
-3. Slug = nazwa folderu → URL: `/blog/twoj-slug`
+2. Dodaj plik źródłowy, np. `en.md` albo `en.mdx`
+3. (Opcjonalnie) dodaj tłumaczenie jako `pl.md` lub `pl.mdx`
+4. Slug = nazwa folderu → URL: `/blog/twoj-slug`
+
+Można też napisać wpis po polsku jako `pl.md` / `pl.mdx`. Jeśli dla wybranego języka nie ma pliku, strona wyświetli dostępny wpis źródłowy i poinformuje czytelnika, że tłumaczenie nie jest dostępne. Tłumaczenia nie są generowane automatycznie — przygotowujemy i zapisujemy je jako osobne pliki, bez wysyłania treści do zewnętrznego API.
+
+Gdy dla jednego języka istnieją oba rozszerzenia, używany jest plik `.mdx`.
 
 ## Frontmatter (nagłówek pliku)
 
@@ -40,7 +39,7 @@ readingTime: "5 min"
 ---
 ```
 
-Poniżej frontmatter pisz treść w Markdown.
+Poniżej frontmatter pisz treść w Markdown. Pliki `.mdx` obsługują dodatkowo JSX w treści, np. semantyczne elementy HTML.
 
 ## Obrazek
 
@@ -50,4 +49,4 @@ Opcjonalnie dodaj miniaturę do `public/blog/twoj-slug.webp` i ustaw `image` w f
 
 Po zapisaniu plików wypchnij zmiany na GitHub. Cloudflare zbuduje stronę ponownie i nowy wpis pojawi się na klovy.chat/blog.
 
-> Wpisy są wczytywane przy buildzie — po dodaniu pliku `.md` potrzebny jest redeploy (automatyczny po pushu).
+> Wpisy są wczytywane przy buildzie — po dodaniu pliku `.md` lub `.mdx` potrzebny jest redeploy (automatyczny po pushu).

@@ -6,6 +6,7 @@ const BLOG_DIR = path.join(process.cwd(), "content/blog");
 
 export type BlogMeta = {
   slug: string;
+  language: string;
   title: string;
   description: string;
   image?: string;
@@ -17,6 +18,15 @@ export type BlogPost = BlogMeta & {
   content: string;
 };
 
+function findBlogFile(slug: string, lang: string): string | null {
+  for (const extension of ["mdx", "md"]) {
+    const filePath = path.join(BLOG_DIR, slug, `${lang}.${extension}`);
+    if (fs.existsSync(filePath)) return filePath;
+  }
+
+  return null;
+}
+
 function getBlogSlugsFromDisk(): string[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
 
@@ -27,22 +37,21 @@ function getBlogSlugsFromDisk(): string[] {
 }
 
 function readBlogFile(slug: string, lang: string): BlogPost | null {
-  const localizedPath = path.join(BLOG_DIR, slug, `${lang}.md`);
-  const enPath = path.join(BLOG_DIR, slug, "en.md");
-  const plPath = path.join(BLOG_DIR, slug, "pl.md");
-  const finalPath = fs.existsSync(localizedPath)
-    ? localizedPath
-    : fs.existsSync(enPath)
-      ? enPath
-      : plPath;
+  const resolvedFile = [lang, "en", "pl"]
+    .map((candidateLang) => ({
+      language: candidateLang,
+      filePath: findBlogFile(slug, candidateLang),
+    }))
+    .find((candidate) => candidate.filePath !== null);
 
-  if (!fs.existsSync(finalPath)) return null;
+  if (!resolvedFile?.filePath) return null;
 
-  const fileContent = fs.readFileSync(finalPath, "utf-8");
+  const fileContent = fs.readFileSync(resolvedFile.filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
   return {
     slug,
+    language: resolvedFile.language,
     title: data.title,
     description: data.description,
     image: data.image,
@@ -58,12 +67,19 @@ export function getBlogSlugs(): string[] {
 
 export function getAllBlogs(lang: string): BlogMeta[] {
   return getBlogSlugsFromDisk()
-    .map((slug) => {
+    .map((slug): BlogMeta | null => {
       const post = readBlogFile(slug, lang);
       if (!post) return null;
 
-      const { content: _content, ...meta } = post;
-      return meta;
+      return {
+        slug: post.slug,
+        language: post.language,
+        title: post.title,
+        description: post.description,
+        image: post.image,
+        tags: post.tags,
+        readingTime: post.readingTime,
+      };
     })
     .filter((post): post is BlogMeta => post !== null);
 }

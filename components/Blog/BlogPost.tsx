@@ -3,10 +3,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { BlogPost as BlogPostType } from "@/lib/blog";
-import BlogContent from "./BlogContent";
+import type { ReactNode } from "react";
 
 type BlogPostProps = {
-  postsByLang: Record<string, BlogPostType | null>;
+  postsByLang: Record<
+    string,
+    (Omit<BlogPostType, "content"> & { content: ReactNode }) | null
+  >;
 };
 
 export default function BlogPost({ postsByLang }: BlogPostProps) {
@@ -30,7 +33,18 @@ export default function BlogPost({ postsByLang }: BlogPostProps) {
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <p className="opacity-70 mb-6">{post.description}</p>
 
-        <BlogContent content={post.content} />
+        {post.language !== lang && (
+          <p
+            role="note"
+            className="mb-6 rounded-lg bg-primary/10 px-4 py-3 text-sm"
+          >
+            {lang === "pl"
+              ? "Ten wpis nie ma jeszcze polskiego tłumaczenia. Wyświetlamy wersję angielską."
+              : "This post is not available in English yet. Showing the Polish version."}
+          </p>
+        )}
+
+        {post.content}
       </div>
     </article>
   );

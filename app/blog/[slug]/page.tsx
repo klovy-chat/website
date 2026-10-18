@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import BlogContent from "@/components/Blog/BlogContent";
 import BlogPost from "@/components/Blog/BlogPost";
 import { getBlogPostByLang, getBlogSlugs } from "@/lib/blog";
 import { notFound } from "next/navigation";
@@ -22,10 +23,17 @@ export default async function Page({
     notFound();
   }
 
+  const renderedPostsByLang = Object.fromEntries(
+    Object.entries(postsByLang).map(([lang, post]) => [
+      lang,
+      post ? { ...post, content: <BlogContent content={post.content} /> } : null,
+    ]),
+  );
+
   return (
     <>
       <Navbar />
-      <BlogPost postsByLang={postsByLang} />
+      <BlogPost postsByLang={renderedPostsByLang} />
       <Footer />
     </>
   );

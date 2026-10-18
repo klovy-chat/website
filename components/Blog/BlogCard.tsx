@@ -56,12 +56,20 @@ export default function BlogCard({
         </div>
 
         <div className="flex flex-col flex-1 p-spacing_md">
-          {blog.publishedAt && (
-            <BlogDate
-              date={blog.publishedAt}
-              lang={lang}
-              className="text-sm opacity-70 mb-2"
-            />
+          {(blog.publishedAt || blog.author) && (
+            <div className="mb-2 flex items-center gap-2 text-sm opacity-70">
+              {blog.author && (
+                <span>
+                  {lang === "pl" ? "Autor" : "Author"}: {blog.author}
+                </span>
+              )}
+              {blog.author && blog.publishedAt && (
+                <span aria-hidden="true">·</span>
+              )}
+              {blog.publishedAt && (
+                <BlogDate date={blog.publishedAt} lang={lang} />
+              )}
+            </div>
           )}
 
           <h3 className="text-lg font-semibold mb-2 line-clamp-2">

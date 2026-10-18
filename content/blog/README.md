@@ -34,13 +34,14 @@ Gdy dla jednego języka istnieją oba rozszerzenia, używany jest plik `.mdx`.
 title: "Tytuł wpisu"
 description: "Opis na liście bloga"
 publishedAt: "2026-10-18"
+author: "Imię i nazwisko autora"
 image: "/blog/twoj-slug.webp"
 tags: ["Klovy Chat", "Aktualizacja"]
 readingTime: "5 min"
 ---
 ```
 
-Pole `publishedAt` jest opcjonalne i używa formatu `YYYY-MM-DD`; data pojawi się na karcie oraz stronie wpisu. Poniżej frontmatter pisz treść w Markdown. Pliki `.mdx` obsługują dodatkowo JSX w treści, np. semantyczne elementy HTML.
+Pola `publishedAt` i `author` są opcjonalne; data używa formatu `YYYY-MM-DD`. Data i autor pojawią się na karcie wpisu. Poniżej frontmatter pisz treść w Markdown. Pliki `.mdx` obsługują dodatkowo JSX w treści, np. semantyczne elementy HTML. Markdown i MDX są kompilowane do HTML podczas builda, a nie na Workerze.
 
 ## Obrazek
 
@@ -50,4 +51,4 @@ Opcjonalnie dodaj miniaturę do `public/blog/twoj-slug.webp` i ustaw `image` w f
 
 Po zapisaniu plików wypchnij zmiany na GitHub. Cloudflare zbuduje stronę ponownie i nowy wpis pojawi się na klovy.chat/blog.
 
-> Wpisy są wczytywane przy buildzie — po dodaniu pliku `.md` lub `.mdx` potrzebny jest redeploy (automatyczny po pushu).
+> Wpisy są wczytywane podczas przygotowania builda — po dodaniu pliku `.md` lub `.mdx` potrzebny jest nowy build i redeploy. Skrypty `dev`, `build` i `lint` automatycznie generują moduł z treścią bloga, dzięki czemu wpisy działają również na Cloudflare Workers.

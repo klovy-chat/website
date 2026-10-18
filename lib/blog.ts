@@ -1,8 +1,4 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
-const BLOG_DIR = path.join(process.cwd(), "content/blog");
+import { BLOG_POSTS } from "./generated-blog-content";
 
 export type BlogMeta = {
   slug: string;
@@ -10,6 +6,7 @@ export type BlogMeta = {
   title: string;
   description: string;
   publishedAt?: string;
+  author?: string;
   image?: string;
   tags: string[];
   readingTime?: string;
@@ -19,72 +16,32 @@ export type BlogPost = BlogMeta & {
   content: string;
 };
 
-function findBlogFile(slug: string, lang: string): string | null {
-  for (const extension of ["mdx", "md"]) {
-    const filePath = path.join(BLOG_DIR, slug, `${lang}.${extension}`);
-    if (fs.existsSync(filePath)) return filePath;
-  }
-
-  return null;
-}
-
-function getBlogSlugsFromDisk(): string[] {
-  if (!fs.existsSync(BLOG_DIR)) return [];
-
-  return fs
-    .readdirSync(BLOG_DIR, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
-}
-
 function readBlogFile(slug: string, lang: string): BlogPost | null {
-  const resolvedFile = [lang, "en", "pl"]
-    .map((candidateLang) => ({
-      language: candidateLang,
-      filePath: findBlogFile(slug, candidateLang),
-    }))
-    .find((candidate) => candidate.filePath !== null);
+  const translations = BLOG_POSTS[slug];
+  if (!translations) return null;
 
-  if (!resolvedFile?.filePath) return null;
-
-  const fileContent = fs.readFileSync(resolvedFile.filePath, "utf-8");
-  const { data, content } = matter(fileContent);
-
-  return {
-    slug,
-    language: resolvedFile.language,
-    title: data.title,
-    description: data.description,
-    publishedAt: data.publishedAt,
-    image: data.image,
-    tags: data.tags || [],
-    readingTime: data.readingTime,
-    content,
-  };
+  return translations[lang] ?? translations.en ?? translations.pl ?? null;
 }
 
 export function getBlogSlugs(): string[] {
-  return getBlogSlugsFromDisk();
+  return Object.keys(BLOG_POSTS);
 }
 
 export function getAllBlogs(lang: string): BlogMeta[] {
-  return getBlogSlugsFromDisk()
-    .map((slug): BlogMeta | null => {
-      const post = readBlogFile(slug, lang);
-      if (!post) return null;
-
-      return {
-        slug: post.slug,
-        language: post.language,
-        title: post.title,
-        description: post.description,
-        publishedAt: post.publishedAt,
-        image: post.image,
-        tags: post.tags,
-        readingTime: post.readingTime,
-      };
-    })
-    .filter((post): post is BlogMeta => post !== null);
+  return getBlogSlugs()
+    .map((slug) => readBlogFile(slug, lang))
+    .filter((post): post is BlogPost => post !== null)
+    .map((post) => ({
+      slug: post.slug,
+      language: post.language,
+      title: post.title,
+      description: post.description,
+      publishedAt: post.publishedAt,
+      author: post.author,
+      image: post.image,
+      tags: post.tags,
+      readingTime: post.readingTime,
+    }));
 }
 
 export function getBlogPost(slug: string, lang: string): BlogPost | null {

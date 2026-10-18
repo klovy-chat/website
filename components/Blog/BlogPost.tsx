@@ -4,7 +4,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { BlogPost as BlogPostType } from "@/lib/blog";
 import type { ReactNode } from "react";
-import BlogDate from "./BlogDate";
 
 type BlogPostProps = {
   postsByLang: Record<
@@ -21,7 +20,7 @@ export default function BlogPost({ postsByLang }: BlogPostProps) {
   if (!post) {
     return (
       <article className="w-full py-section">
-        <div className="max-w-7xl mx-auto px-spacing_lg xl:px-spacing_xl">
+        <div className="max-w-3xl mx-auto px-spacing_lg xl:px-spacing_xl">
           <p className="opacity-70">{t("blog.postNotFound")}</p>
         </div>
       </article>
@@ -30,14 +29,7 @@ export default function BlogPost({ postsByLang }: BlogPostProps) {
 
   return (
     <article className="w-full py-section">
-      <div className="max-w-7xl mx-auto px-spacing_lg xl:px-spacing_xl">
-        {post.publishedAt && (
-          <BlogDate
-            date={post.publishedAt}
-            lang={lang}
-            className="text-sm opacity-70 mb-3"
-          />
-        )}
+      <div className="max-w-3xl mx-auto px-spacing_lg xl:px-spacing_xl">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <p className="opacity-70 mb-6">{post.description}</p>
 

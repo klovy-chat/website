@@ -1,6 +1,3 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
-
 export default function BlogContent({ content }: { content: string }) {
   return (
     <div
@@ -17,14 +14,7 @@ export default function BlogContent({ content }: { content: string }) {
     prose-h2:text-primary
     prose-h3:text-primary
   "
-    >
-      <MDXRemote
-        source={content}
-        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-        components={{
-          h1: (props) => <h2 {...props} />,
-        }}
-      />
-    </div>
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   );
 }

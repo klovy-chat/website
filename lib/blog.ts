@@ -41,7 +41,10 @@ export function getAllBlogs(lang: string): BlogMeta[] {
       image: post.image,
       tags: post.tags,
       readingTime: post.readingTime,
-    }));
+    }))
+    .sort((a, b) =>
+      (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""),
+    );
 }
 
 export function getBlogPost(slug: string, lang: string): BlogPost | null {

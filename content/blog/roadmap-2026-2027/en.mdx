@@ -1,0 +1,283 @@
+---
+title: "Roadmap 2026-2027"
+description: "Our plans for Klovy Chat during the final months of 2026 and throughout 2027."
+publishedAt: "2026-10-20"
+author: "Jakub Maksymowicz"
+tags: ["Klovy Chat", "Roadmap", "Development"]
+readingTime: "15 min"
+---
+
+# Klovy Chat — Roadmap 2026–2027
+
+We want Klovy Chat to grow into an independent messaging platform for text and voice communication, with as much control over the project as possible — from the application itself and its backend to the infrastructure it runs on. There is still a lot of work ahead, so we've put together this roadmap to share what we're hoping to work on during the final months of 2026 and throughout 2027.
+
+Not everything will happen on schedule, and some plans may take longer than expected. Certain changes will require us to rethink parts of the current architecture, while others will mean learning new things and preparing infrastructure we don't have yet. Still, these are the directions we want to take Klovy Chat in as the project continues to grow.
+
+## The Rest of 2026
+
+### 1. Subscription Plans and Payments
+
+**Target: November–December 2026**
+
+We plan to introduce monthly and yearly subscriptions to help cover the ongoing costs of running Klovy Chat, including servers, infrastructure and future development.
+
+We're currently considering Stripe and Polar.sh. We haven't made a final decision yet, as we still need to compare their pricing, features and how well they would fit our needs.
+
+We don't want subscriptions to make the basic version of Klovy Chat a paid product. The free plan will remain available, while paid plans may offer higher storage limits, larger file upload limits and additional customization options.
+
+Pricing and the exact features included in each plan will be decided later. First, we need to get the payment system working properly, including subscription management, cancellations and secure payment processing.
+
+### 2. Launching the Mobile App
+
+**Target: November–December 2026**
+
+Another goal is to release Klovy Chat on Google Play and the Apple App Store. We want people to be able to use the platform comfortably on their phones, rather than relying on the browser alone.
+
+Before releasing the app, we need to make sure it works reliably on both Android and iOS. This includes login, push notifications, file uploads and what happens when a device loses its internet connection. We'll also need to test it on different devices instead of relying on a single phone or emulator.
+
+There are also the requirements of both app stores to consider, including permissions, privacy disclosures and the submission process itself. Releasing the app won't be the end of the work, either. We'll need to keep it updated and deal with issues reported by users.
+
+These dates are estimates, not promises. If the app isn't stable enough by then, we'd rather delay the release than rush it out just to meet a deadline.
+
+---
+
+# Roadmap for 2027
+
+## 1. Reworking the Backend and Preparing for Growth
+
+One of our main goals for 2027 is to make the Klovy Chat backend easier to maintain and develop. At the moment, much of the functionality lives within a single API. That was a reasonable approach earlier in the project's development, but as the platform grows, keeping everything in one place can make changes harder to manage and bugs more difficult to track down.
+
+We want to split the backend into clearly defined modules. Some of the initial modules could include `auth`, `users`, `chat`, `gateway`, `media`, `notifications` and `calls`. Each would handle a specific part of the platform instead of having unrelated responsibilities mixed together.
+
+This isn't just about creating a few new folders in the codebase. We want each module to have a clear purpose, with well-defined boundaries and a sensible way of communicating with the rest of the system. That should make the code easier to test, extend and debug.
+
+Over time, we may decide to turn some of these modules into separate services:
+
+- **Auth & User Service** — registration, login, user accounts and sessions.
+- **Chat / Message Service** — sending messages, conversation history and channel management.
+- **Presence / Gateway Service** — real-time connections, user presence and event delivery.
+- **Media / Attachment Service** — uploading, processing and serving files and other attachments.
+- **Notification Service** — notifications for new messages and other events.
+- **Call Service** — call-related logic and integration with the infrastructure responsible for voice communication.
+
+We don't plan to turn everything into microservices right away. A well-structured modular backend is probably the better starting point, with individual services introduced only when there's a clear reason to separate them. Microservices can offer more flexibility, but they also bring extra work around service communication, monitoring, deployments, failure handling and keeping data consistent.
+
+One thing we'd like to avoid is a problem in one part of the system unnecessarily affecting everything else. For example, heavy file uploads shouldn't interfere with login or text messaging any more than they have to. A clearer separation of responsibilities should also make it easier to identify which part of the system is causing performance issues.
+
+The current backend is written in Rust, and we intend to keep Rust as the main language for the server-side logic and API for now. However, using Rust alone won't solve every scaling problem. The database, connection management, system architecture and infrastructure configuration will matter just as much.
+
+We're also looking into Erlang and Elixir, particularly for handling large numbers of simultaneous connections and real-time communication. One possibility would be to use either of them for the Gateway layer, responsible for WebSocket connections, event delivery and communication with clients, while Rust continues to handle the main backend logic and API.
+
+We haven't decided whether adding another language would actually be worthwhile. Before introducing more technology, we want to understand where the real bottlenecks are and whether they can be addressed within the existing architecture. Every additional language means more code to maintain and more complexity for the project.
+
+Another option we're considering is RabbitMQ for background jobs and event processing. It could be useful for notifications and other operations that don't need to finish as part of the original request. If traffic increases, queues could also help distribute work over time instead of trying to process everything immediately.
+
+That doesn't mean every text message would have to pass through RabbitMQ. Low latency is important in a messaging platform, so the delivery path needs to be designed around the requirements of each operation. Queues also don't eliminate the need for proper error handling, retries and protection against duplicate jobs.
+
+**Goal:** Build a backend that's easier to maintain, extend and troubleshoot, while giving us room to scale individual parts of the system as the number of users grows.
+
+## 2. Self-Hosted Audio Infrastructure and Better Voice Calls
+
+We want to improve voice calls in Klovy Chat and move to a production-ready, self-hosted LiveKit setup.
+
+For now, we're using LiveKit's free environment. That's useful while we're developing and testing the feature, but eventually we'd like to have more control over the servers, configuration and audio traffic.
+
+Our plan is to **run LiveKit ourselves on one or more dedicated VPS instances**, separately from the main Klovy Chat backend. This would allow us to keep call traffic apart from the rest of the platform and manage its resources independently.
+
+The planned work includes:
+
+- Deploying LiveKit Server in a production environment.
+- Setting up a dedicated host and the required DNS records.
+- Configuring WebRTC and opening the necessary UDP ports.
+- Setting up TURN, including our own TURN server if testing shows it's needed to establish connections on restrictive networks.
+- Integrating LiveKit with the Rust backend, which will handle authentication and issue short-lived access tokens for rooms.
+- Securing API keys and other secrets, while restricting access to administrative interfaces.
+- Monitoring call quality, CPU and memory usage, and network bandwidth.
+- Fixing issues with joining and leaving calls, reconnecting, microphone and camera access, and screen sharing.
+
+We also want to test how calls behave on weaker internet connections and with larger groups of participants. Getting a connection established is only part of the job. Audio interruptions, failed reconnections and device-related problems can make a call frustrating even when everything appears to work at first.
+
+The initial plan is to run LiveKit on a separate Ubuntu VPS using Docker, with the required network ports and WebRTC traffic configured correctly. Depending on actual usage and test results, we can increase the server's resources or deploy additional instances later.
+
+Cloudflare can still handle DNS, but its standard HTTP proxy and Cloudflare Tunnel aren't substitutes for the direct network connectivity required by LiveKit's WebRTC setup, including UDP traffic. We'll need to account for LiveKit's actual networking requirements instead of assuming all traffic can pass through a regular HTTP proxy.
+
+The long-term goal is to have a stable audio environment that we can operate, monitor and improve ourselves. The final setup will depend on costs, real-world usage and the results of our testing.
+
+## 3. Reducing Our Dependence on Cloudflare
+
+One of our longer-term goals is to gradually reduce Klovy Chat's dependence on Cloudflare. We currently use several of its services for important parts of our infrastructure, including:
+
+- DDoS protection and proxying traffic.
+- Cloudflare Pages for the application frontend at `app.klovy.chat`.
+- Hosting for the main project website at `klovy.chat`.
+- CDN-related services and media delivery, including our media proxy.
+
+Cloudflare provides useful services and has helped us run the project so far. However, we don't want such a large part of Klovy Chat to depend on a single external provider indefinitely.
+
+Jurisdiction and access to data are also part of the discussion. Cloudflare is a US-based company, and the US CLOUD Act of 2018 sets out legal provisions under which US authorities can request certain data from providers subject to US jurisdiction when that data is within their possession, custody or control. Depending on the circumstances, this can include data stored outside the United States.
+
+This doesn't mean US authorities automatically have unrestricted access to everything Cloudflare handles. Any request depends on its legal basis, scope and the applicable procedures. Using a US-based service also doesn't mean that a particular user's data has been disclosed to government authorities.
+
+Still, the CLOUD Act is one of the reasons we want to take a closer look at where Klovy Chat data is stored and processed, and which providers our infrastructure depends on. We want more control over our data, network traffic and the jurisdictions involved.
+
+Simply changing VPS providers wouldn't solve the whole problem. If our frontend, CDN, DNS, DDoS protection and media delivery still depended on the same company, much of that dependence would remain. We want to approach this more broadly and gradually move individual components to infrastructure we can operate ourselves or to alternative providers.
+
+Some of the areas we'd like to work on include:
+
+- Moving the frontend to independent hosting infrastructure.
+- Developing our own approach to file and media delivery.
+- Reducing our reliance on Cloudflare's proxy and traffic protection services.
+- Evaluating alternative DDoS protection solutions.
+- Separating infrastructure components so that an outage at one provider doesn't take down the entire platform.
+- Preparing a migration plan and recovery procedures in case an external service becomes unavailable.
+
+We don't expect to make all these changes at once. DDoS protection and global traffic distribution are difficult problems, and building and maintaining our own infrastructure can be expensive. We'll need to find a reasonable balance between independence, security, performance and cost.
+
+**Reducing our dependence on Cloudflare doesn't mean giving up protection.** We still want to defend Klovy Chat against attacks and outages. The aim is to have more choice and control over how that protection works.
+
+## 4. End-to-End Encryption (E2EE) for Text Messages and Voice Calls
+
+Privacy is one of the main reasons we're building Klovy Chat. We want to introduce end-to-end encryption (E2EE) for both text messages and voice calls.
+
+Text messages currently use AES-256-GCM encryption on the application side. However, this isn't full end-to-end encryption, so we can't yet guarantee that only the sender and recipient can access the contents of a conversation.
+
+Our long-term goal is to encrypt messages on the sender's device and decrypt them only on the recipient's device. The server should be able to relay encrypted data without needing access to the actual message contents.
+
+There's much more to this than simply replacing one encryption algorithm with another. We'll need to design secure key management, key exchange, multi-device support and a reliable way to handle new participants joining conversations. We'll also need to think about what happens when someone reinstalls the app or loses access to a device.
+
+We want to rely on established cryptographic solutions instead of inventing our own protocol from scratch. Libraries such as libsodium are among the options we're considering where they fit the requirements. The final choice of cryptographic mechanisms will depend on the architecture of the whole system.
+
+E2EE also needs to account for key verification, key changes and protection against attempts to impersonate other devices. Encrypting a message is only one part of the problem if the system doesn't manage keys correctly.
+
+Voice calls are another area we're looking at. We don't currently provide our own end-to-end encryption for audio calls. We'd like to investigate what LiveKit offers and whether we can add an additional layer of encryption on the client side.
+
+It's important to distinguish encryption in transit from genuine E2EE. Transport encryption protects data as it travels between devices and servers, but it doesn't necessarily prevent the server itself from accessing the audio. Group calls and screen sharing introduce additional considerations because streams are forwarded through an SFU server.
+
+For that reason, we won't claim that voice calls have full E2EE until the implementation is actually in place and has been properly tested.
+
+Before releasing these features, we'll need security testing, an analysis of potential attacks and clear documentation of the limitations. We'll also have to consider which features might behave differently once E2EE is enabled, including server-side message search and displaying message contents in notifications.
+
+This is a substantial undertaking, so we'll probably approach it in stages. The priority is to build something users can genuinely trust rather than rush out a feature that only looks secure on the surface.
+
+## 5. Introducing Federation
+
+In the future, we'd like to introduce federation so that different Klovy Chat instances can communicate with each other. Similar approaches are already used by other messaging projects and platforms built around federated protocols.
+
+At the moment, communication through Klovy Chat depends on infrastructure managed by the project. Federation could reduce that dependence and allow independently operated servers to exchange messages and other events.
+
+For example, someone using an instance run by one community could talk to someone on another instance, provided both servers support the same protocol and allow communication with each other.
+
+Making this work will require a way to identify users and servers, exchange messages, authenticate remote instances and handle errors when another server becomes unavailable. We'll also need clear rules for blocking users, moderation and trust between instances.
+
+Federation isn't simply a matter of exposing an API to other servers. Each instance needs to know how to exchange data safely and what to do when another server stops responding or sends invalid information.
+
+We'll also need to consider how federation works alongside E2EE. End-to-end encryption should protect message contents regardless of which servers relay them. However, it doesn't automatically hide every piece of metadata, such as information about connections between instances.
+
+We don't want to rush federation into production. First, we need a well-designed protocol, compatibility testing and safeguards against spam and abuse.
+
+The long-term goal is to open Klovy Chat to independently operated instances, so users don't have to rely entirely on one central server.
+
+## 6. Self-Hosting — Running Your Own Klovy Chat Instance
+
+Another long-term goal is to make Klovy Chat self-hostable. We want individuals, communities and teams to be able to run their own instances on their own servers instead of relying exclusively on infrastructure maintained by us.
+
+This will require documentation, configuration files and ready-to-use container images that make it possible to run the necessary services on a VPS or a dedicated server. Ideally, getting a basic installation running shouldn't require manually configuring every component from scratch.
+
+We'll need to account for several things, including:
+
+- Backend, database and supporting service configuration.
+- File and attachment storage.
+- Domain names, TLS certificates and real-time connections.
+- Updates and database migrations.
+- Backups and data recovery.
+- Initial setup, administrator accounts and permission management.
+- Instance monitoring and basic security measures.
+
+We also want to make it clear which components can operate entirely independently and which, if any, may rely on external services.
+
+Self-hosting should give administrators control over their own instance, its data and its configuration. We don't want users to be forced to rely on our servers for the core functionality of the platform.
+
+In the future, independently hosted instances could communicate with the official Klovy Chat instance through federation. However, installing Klovy Chat wouldn't automatically make an instance part of a shared network. Administrators should decide for themselves whether their instance communicates with others and which servers it trusts.
+
+Self-hosting also comes with responsibility. Administrators will need to handle updates, backups, network configuration and the security of their own infrastructure. That's why clear documentation and sensible default settings will be important.
+
+## 7. Getting Our Own ASN and Announcing IP Prefixes
+
+Further down the line, we'd like to obtain our own Autonomous System Number (ASN) and explore announcing our own IP prefixes on the internet.
+
+An ASN identifies a network within the global BGP routing system. Having our own ASN and appropriately allocated address space could give us more control over routing, upstream providers and how our infrastructure connects to the internet.
+
+We're interested in this as part of our broader effort to build more independent infrastructure for Klovy Chat. Eventually, we'd like to have greater flexibility when choosing network providers and moving services between locations, rather than relying entirely on the IP addresses and network of a single hosting company.
+
+However, obtaining an ASN is only one part of the process. We'd need suitable IPv4 or IPv6 address resources, cooperation with network operators, a working BGP setup and procedures for monitoring and responding to routing problems. We'd also need to meet the requirements of the relevant Regional Internet Registry.
+
+Having our own ASN doesn't automatically provide DDoS protection or better performance. A poorly configured network could actually cause availability problems. Before moving in this direction, we want to build up the necessary networking knowledge and carefully evaluate the costs.
+
+This isn't a priority for early 2027, but it's a longer-term possibility that could help us become more independent at the network level.
+
+## 8. Considering a Company in the United Kingdom
+
+We're also considering whether establishing a company in the United Kingdom would make sense for Klovy Chat as the project grows and potentially expands internationally.
+
+We'd like the project to be able to operate beyond a single market and reach users around the world. The right business structure could make it easier to work with partners, handle payments, sign contracts and finance infrastructure.
+
+One reason we're looking into this possibility is the ongoing European debate around privacy in private communications, particularly proposals commonly referred to as Chat Control. We want Klovy Chat to develop without compromising the privacy of conversations or introducing measures that undermine confidential communication.
+
+We'll continue following legal developments and assessing how they might affect the project. At the same time, registering a company in the UK wouldn't automatically exempt Klovy Chat from EU law or the laws of other countries. Relevant factors could include where the business operates, where its users are located, which services it provides and the legal obligations that apply.
+
+We don't want to make this decision based solely on the current political climate. Before establishing a company, we'd need to look carefully at the costs, tax obligations, data protection requirements and other rules involved in running an international business.
+
+For now, this is an option we're considering, not a confirmed decision to register a company.
+
+## 9. Server Locations and Greater Control Over Jurisdiction
+
+We want to take another look at where Klovy Chat's servers are located and consider moving some of our infrastructure outside the European Union.
+
+One reason is the ongoing debate around Chat Control and future regulations governing electronic communications. We'd like to have more flexibility when choosing where data is stored and processed, while taking user privacy and applicable laws into account.
+
+However, servers outside the EU don't automatically provide better privacy. Countries outside the Union have their own laws governing government access to data, and some may offer weaker privacy protections.
+
+The choice of location should therefore depend on the applicable laws, contractual terms, technical security and quality of service. We don't want to move servers simply to change their location on a map.
+
+We'll be looking at different regions and providers, paying attention to:
+
+- The rules governing government access to data.
+- The legal obligations of providers and service operators.
+- Personal data protection and data processing agreements.
+- Connection quality and latency for users.
+- Infrastructure reliability, backups and migration options.
+- Running costs and room for future growth.
+
+We also want to avoid putting all important services and data in one location or with one provider. Depending on the project's needs and available resources, parts of the infrastructure could eventually operate across multiple regions.
+
+The main goal is to find a setup that keeps Klovy Chat reliable while giving us more control over the infrastructure behind it.
+
+## 10. Privacy and Preparing for Regulations Such as Chat Control
+
+Klovy Chat is being built with private communication in mind. We want people to be able to talk without unnecessary data collection, and we want the contents of conversations protected by genuine end-to-end encryption to remain inaccessible to the service operator.
+
+Given the ongoing debate around Chat Control, we want to take a closer look at which technical decisions can help protect privacy and reduce the amount of data we need to process.
+
+Chat Control is a term commonly used in public debate about EU proposals and regulations concerning the detection of child sexual abuse material in online services. The actual obligations depend on the final form of the legislation and how it is implemented. We don't want to base our plans on the assumption that a particular legal proposal will definitely be adopted in a specific form.
+
+From a technical perspective, our priorities are to develop genuine E2EE, minimise metadata collection and retain only the information necessary to operate the service. We'll also look at what data remains visible to the server, how long it's stored and whether we can reduce its scope without making the platform less reliable.
+
+It's important to be clear that end-to-end encryption doesn't automatically remove legal obligations or make every piece of metadata invisible. Information such as connection times, IP addresses, account details and the fact that someone communicated with a particular server may still be processed, depending on the system's architecture and how the application is used.
+
+We also don't want to introduce features that only give the appearance of privacy. If a feature doesn't protect certain content or metadata, we should explain that clearly.
+
+We'll explore ways to reduce the amount of data stored on our servers, limit logging, shorten retention periods for technical information and use encryption wherever it's appropriate. If new legal obligations emerge, we'll need to assess their impact on the project and seek specialist advice where necessary.
+
+We can't promise that the application's architecture alone will allow us to avoid every future legal requirement. What we can do is design Klovy Chat to collect as little unnecessary data as possible and provide strong protection for message contents.
+
+Our goal is to protect privacy in practice, rather than make promises that can't be delivered technically or legally.
+
+## Final Thoughts
+
+In 2027, we want to focus primarily on reworking the backend, improving voice calls and gradually making Klovy Chat less dependent on external infrastructure. Alongside that work, we plan to make progress on E2EE, federation and self-hosting.
+
+Some of these projects are substantial and may take longer than we initially expect. Full end-to-end encryption, federation and building our own network infrastructure are particularly challenging. We'd rather take the time to get them right than rush through the roadmap just to tick off a few items.
+
+All dates and plans in this document are estimates. We can't guarantee that every item will be completed within the proposed timeframe. Progress will depend on available resources, costs, test results and the problems we encounter along the way.
+
+Still, we want to keep moving in this direction and update the roadmap as the project develops. Our aim is to make Klovy Chat more reliable, secure and independent over time, while keeping it open to contributions, feedback and ideas from the community.
